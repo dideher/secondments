@@ -1,0 +1,14 @@
+-r requirements-local.txt
+gunicorn
+mysqlclient
+#jdcal==1.4.1
+#openpyxl
+#PyPDF2==1.27.5
+#python-bidi==0.4.2
+#pytz==2020.4
+#reportlab==3.5.56
+#whitenoise==5.2.0
+#sortedcontainers
+#django-filter==21.1
+#tabulate
+sentry-sdk
