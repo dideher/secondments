@@ -20,6 +20,7 @@ services:
       - back-tier
   web:
     build: .
+    image: secondments-web
     restart: always
     environment:
       ENVIRONMENT: dev
@@ -37,6 +38,27 @@ services:
         condition: service_healthy
     ports:
       - "8000:80"
+    networks:
+      - front-tier
+      - back-tier
+  migrations:
+    image: secondments-web
+    entrypoint: /bin/sh
+    environment:
+      DJANGO_SETTINGS_MODULE: secondments.settings.development
+      DB_HOST: db
+      DB_NAME: db_secondments
+      DB_USER: secondments_user
+      DB_PASS: secondments_pass
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./app:/app
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8001:80"
     networks:
       - front-tier
       - back-tier
