@@ -1,6 +1,9 @@
 Django==4.1.3
 djangorestframework
 markdown
+requests
 django-filter
+django-bootstrap5
+django-bootstrap-modal-forms
 django-impersonate
 
